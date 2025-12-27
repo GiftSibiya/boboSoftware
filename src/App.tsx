@@ -13,7 +13,7 @@ function App() {
             <div className="hidden md:flex space-x-8">
               <a href="#services" className="text-gray-700 hover:text-green-700 transition-colors">Services</a>
               <a href="#projects" className="text-gray-700 hover:text-green-700 transition-colors">Projects</a>
-              <a href="#contact" className="text-gray-700 hover:text-green-700 transition-colors">Contact</a>
+              <a href="#contact" className="text-gray-700 hover:text-green-700 transition-colors">Contact Us</a>
             </div>
           </div>
         </div>
