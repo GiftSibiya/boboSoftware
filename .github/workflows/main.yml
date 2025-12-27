@@ -1,0 +1,52 @@
+name: Deploy b0b0 Software Front to cPanel
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the repository
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      # Set environment variables from secrets
+    #   - name: Set Environment Variables
+    #     run: |
+    #       echo "VITE_SKAFTIN_API_URL=${{ secrets.VITE_SKAFTIN_API_URL }}" >> $GITHUB_ENV
+    #       echo "VITE_SKAFTIN_API_KEY=${{ secrets.VITE_SKAFTIN_API_KEY }}" >> $GITHUB_ENV
+    #       echo "VITE_SKAFTIN_ACCESS_TOKEN=${{ secrets.VITE_SKAFTIN_ACCESS_TOKEN }}" >> $GITHUB_ENV
+      
+      # Clear Cache
+      - name: Clear npm cache
+        run: npm cache clean --force
+
+      # Install dependencies and build the app
+      - name: Install dependencies
+        run: npm install
+        
+      - name: Build the app
+        run: npm run build
+        # env:
+        #   VITE_SKAFTIN_API_URL: ${{ secrets.VITE_SKAFTIN_API_URL }}
+        #   VITE_SKAFTIN_API_KEY: ${{ secrets.VITE_SKAFTIN_API_KEY }}
+        #   VITE_SKAFTIN_ACCESS_TOKEN: ${{ secrets.VITE_SKAFTIN_ACCESS_TOKEN }}
+
+      # Upload the build files to cPanel using FTP
+      - name: Deploy to cPanel via FTP
+        uses: SamKirkland/FTP-Deploy-Action@4.3.0
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          local-dir: dist/  # Directory containing the build files
