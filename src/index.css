@@ -1,6 +1,10 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-green-600: #2d8659;
+  --color-green-700: #1e5631;
+  --color-green-800: #164023;
+}
 
 @layer base {
   html {
