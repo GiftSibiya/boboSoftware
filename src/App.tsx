@@ -27,7 +27,7 @@ function App() {
             Custom Software Solutions
           </h1>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto mb-8">
-            We build modern web and mobile applications with React, React Native, and Node.js. 
+            We build modern web and mobile applications with React, React Native, and powerful Node.js backends. 
             Delivering scalable, type-safe solutions powered by TypeScript.
           </p>
         </div>
