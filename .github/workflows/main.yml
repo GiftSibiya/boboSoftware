@@ -50,4 +50,4 @@ jobs:
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           local-dir: dist/  # Directory containing the build files
-          server-dir: /bobosoftware.co.za/public_html/  # cPanel directory for addon domain
+          server-dir: /public_html/  # cPanel main public_html directory
